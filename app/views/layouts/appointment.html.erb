@@ -1,0 +1,85 @@
+<% @step = 1 %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SchedulingWidget</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'appointments', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :stylesheet %>
+    <%= yield :javascript %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Request an Appointment</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">The Therapist Center</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="wrapper">
+      <nav id="sidebar">
+        <ul class="list-unstyled components">
+          <li class="<%= side_nav_item_active_class(Appointment::Steps::CLINICIAN, @step_sym) %>">
+            <div class="step">
+              <span class="number">1</span>
+            </div>
+            <div class="step-details">
+              <p>CLINICIAN</p>
+              <span>Rob Gross, MFT</span>
+            </div>
+          </li>
+          <li class="<%= side_nav_item_active_class(Appointment::Steps::SERVICES, @step_sym) %>">
+            <div class="step">
+              <span class="number">2</span>
+            </div>
+            <div class="step-details">
+              <p>SELECT A SERVICE</p>
+            </div>
+          </li>
+          <li class="<%= side_nav_item_active_class(Appointment::Steps::OFFICES, @step_sym) %>">
+            <div class="step">
+              <span class="number">3</span>
+            </div>
+            <div class="step-details">
+              <p>SELECT A LOCATION</p>
+            </div>
+          </li>
+
+          <li class="<%= side_nav_item_active_class(Appointment::Steps::DATE_AND_TIME, @step_sym) %>">
+            <div class="step">
+              <span class="number">4</span>
+            </div>
+            <div class="step-details">
+              <p>SELECT A DATE & TIME</p>
+            </div>
+          </li>
+
+          <li class="<%= side_nav_item_active_class(Appointment::Steps::YOUR_INFORMATION, @step_sym) %>">
+            <div class="step">
+              <span class="number">5</span>
+            </div>
+            <div class="step-details">
+              <p>YOUR INFORMATION</p>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="content">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

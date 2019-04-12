@@ -1,0 +1,102 @@
+@import "bootstrap";
+@import "variables";
+appointments
+body {
+  background: $bg-color !important;
+}
+
+.navbar {
+  background: $container-bg-color !important;
+  border-bottom: 1px solid #DDD;
+}
+.btn-primary {
+  color: $container-bg-color !important;
+  background-color: $highlight-color;
+  border-color: $highlight-color;
+}
+
+.wrapper {
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  background: $container-bg-color;
+  color: $text-color;
+  min-height: 100vh;
+  min-width: 250px;
+  max-width: 250px;
+  padding: 10px;
+  transition: all 0.3s;
+
+  ul {
+    li {
+      clear: both;
+      float: left;
+      margin: 8px 0px;
+
+      .step {
+        float: left;
+        margin: 0px 5px;
+
+        .number {
+          display: block;
+          padding: 3px 8px;
+          font-family: gotham-htf-bold,sans-serif;
+          font-size: 15px;
+          width: 30px;
+          height: 30px;
+          border: 2px solid $inactive-color;
+          color: $inactive-color;
+          border-radius: 50px;
+          margin: 0 auto;
+          font-weight: 900;
+        }
+      }
+      .step-details {
+        float: left;
+        color: $inactive-color;
+
+        p {
+          font-size: 17px;
+          margin: 5px 0px 0px 0px;
+        }
+        span {
+          color: $highlight-color;
+          font-size: 15px;
+          margin: 0 0 0 5px;
+        }
+      }
+
+      &.active {
+        .step {
+          .number {
+            border: 2px solid $text-color;
+            color: $text-color;
+          }
+        }
+
+        .step-details {
+          color: $text-color;
+        }
+      }
+      &.current {
+        .step {
+          .number {
+            border: 2px solid $highlight-color;
+            color: $highlight-color;
+          }
+        }
+
+        .step-details {
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
+
+#content {
+  width: 100%;
+}

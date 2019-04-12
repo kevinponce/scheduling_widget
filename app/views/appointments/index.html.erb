@@ -1,0 +1,18 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag 'appointments/services' %>
+<% end %>
+
+<% FetchServicesServices.call.each do |service| %>
+  <div class="col-xs-12 card">
+    <div class="card-content">
+      <h3><%= service[:attributes][:description] %></h3>
+      <span><%= service[:attributes][:duration] %> minutes</span>
+    </div>
+    <div class="card-action-wrapper">
+      <%= form_for(@appointment, method: :post) do |f| %>
+        <%= f.hidden_field :cpt_codes_id, value: service[:id] %>
+        <%= f.submit 'Select', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

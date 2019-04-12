@@ -1,0 +1,18 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag 'appointments/offices' %>
+<% end %>
+
+<% FetchOfficesServices.call(@appointment.cpt_codes_id).each do |office| %>
+  <div class="col-sm-4 card">
+    <div class="card-content">
+      <h3 class="col-sm-12"><%= office[:attributes][:name] %></h3>
+      <div class="col-sm-12"><%= office[:attributes][:street] %></div>
+      <div class="col-sm-12"><%= office[:attributes][:city] %>, <%= office[:attributes][:state] %> <%= office[:attributes][:zip] %></div>
+      <div class="col-sm-12"><%= office[:attributes][:phone] %></div>
+    </div>
+    <%= form_for(@appointment, url: wizard_path, method: :put) do |f| %>
+      <%= f.hidden_field :office_id, value: office[:id] %>
+      <%= f.submit 'Select', class: "btn btn-primary col-sm-12" %>
+    <% end %>
+  </div>
+<% end %>
