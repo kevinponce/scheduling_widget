@@ -14,7 +14,7 @@ $ rails s
 ```
 
 ## Todo
-Select Clinician
-Add Google maps to Location
-Date and time
-Your information
+* Select Clinician
+* Add Google maps to Location
+* Date and time
+* Your information
